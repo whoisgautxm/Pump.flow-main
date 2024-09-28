@@ -9,17 +9,18 @@ import { ArrowLeft } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useAccount, useReadContract } from "wagmi";
 import { contract_abi } from "@/abi/TokenFactoryAbi";
-import { flowTestnet } from "viem/chains";
+// import { flowTestnet } from "viem/chains";
 import { createClient } from "@/utils/supabase/client";
 import { useModal } from "connectkit";
 import TokenTrade from "@/components/blocks/token-trade";
 
 export default function TokenDetail() {
+  const neoTestnetId = 12227332;
   const [pageToken, setPageToken] = useState<any>();
   const { data: tokens } = useReadContract<any, any, Array<any>>({
     abi: contract_abi,
     address: process.env.NEXT_PUBLIC_TOKEN_FACTORY_ADDRESS! as `0x${string}`,
-    chainId: flowTestnet.id,
+    chainId: neoTestnetId,
     functionName: "getAllMemeTokens",
   });
   const params = useParams();
@@ -33,7 +34,7 @@ export default function TokenDetail() {
   const { data: totalSupply } = useReadContract<any, any, Array<any>>({
     abi: contract_abi,
     address: process.env.NEXT_PUBLIC_TOKEN_FACTORY_ADDRESS! as `0x${string}`,
-    chainId: flowTestnet.id,
+    chainId: neoTestnetId,
     functionName: "getTotalSupply",
     args: [pageToken?.tokenAddress],
   });
@@ -41,7 +42,7 @@ export default function TokenDetail() {
   const { data: remainingSupply } = useReadContract<any, any, Array<any>>({
     abi: contract_abi,
     address: process.env.NEXT_PUBLIC_TOKEN_FACTORY_ADDRESS! as `0x${string}`,
-    chainId: flowTestnet.id,
+    chainId: neoTestnetId,
     functionName: "getRemainingSupply",
     args: [pageToken?.tokenAddress],
   });

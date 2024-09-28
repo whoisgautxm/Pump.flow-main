@@ -29,6 +29,7 @@ type FormData = {
 };
 
 export default function CreateTokenDialog() {
+  const neoTestnetId = 12227332;
   const {
     writeContractAsync,
     data: hash,
