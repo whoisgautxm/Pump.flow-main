@@ -5,6 +5,25 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 import { ReactNode } from "react";
 import { injected, walletConnect } from "@wagmi/connectors";
+import { type Chain } from "viem";
+
+export const neox: Chain = {
+  id: 12227332,
+  name: "NeoX T4",
+  nativeCurrency: {
+    decimals: 18,
+    name: "NeoX T4",
+    symbol: "GAS",
+  },
+  rpcUrls: {
+    default: { http: ["https://neoxt4seed1.ngd.network/"] },
+  },
+  blockExplorers: {
+    default: { name: "SnowTrace", url: "https://xt4scan.ngd.network/" }
+  },
+  testnet: true,
+};
+
 
 export const config = createConfig(
   getDefaultConfig({
@@ -16,16 +35,16 @@ export const config = createConfig(
       }),
     ],
     transports: {
-      [flowTestnet.id]: http("https://flow-testnet.g.alchemy.com/v2/JzDENQ87lCifK907U4Fnf0g9jXp3OeUf"),
+      [neox.id]: http(neox.rpcUrls.default.http[0]), // Extract the first URL string
     },
     // Your dApps chains
-    chains: [flowTestnet],
+    chains: [neox],
 
     // Required API Keys
     walletConnectProjectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!,
 
     // Required App Info
-    appName: "Pump Flow",
+    appName: "Pump Poo",
 
     // Optional App Info
     appDescription: "Pump Flow meme coin gen",
