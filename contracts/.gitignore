@@ -1,0 +1,16 @@
+# Compiler files
+cache/
+out/
+lib/
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*/31337/
+/broadcast/**/dry-run/
+
+# Docs
+docs/
+@openzeppelin-contracts-5.0.2/
+
+# Dotenv file
+.env
