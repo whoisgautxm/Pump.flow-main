@@ -144,9 +144,9 @@ export default function CreateTokenDialog() {
 
   return (
     <>
-      <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-green-500">
+      <Card className="bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700">
         <CardHeader>
-          <CardTitle className="text-sm text-gray-700 dark:text-green-400">
+          <CardTitle className="text-sm text-gray-700 dark:text-slate-50">
             Create New Token
           </CardTitle>
         </CardHeader>
@@ -155,14 +155,14 @@ export default function CreateTokenDialog() {
             <div className="space-y-1">
               <Label
                 htmlFor="name"
-                className="text-gray-600 dark:text-green-400 text-[10px]"
+                className="text-gray-600 dark:text-slate-50 text-[10px]"
               >
-                name
+                Name
               </Label>
               <Input
                 id="name"
                 {...register("name", { required: "Required" })}
-                className="h-5 text-[10px] bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
+                className="h-7 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
               />
               {errors.name && (
                 <span className="text-red-500 text-[8px]">
@@ -174,14 +174,14 @@ export default function CreateTokenDialog() {
             <div className="space-y-1">
               <Label
                 htmlFor="ticker"
-                className="text-gray-600 dark:text-green-400 text-[10px]"
+                className="text-gray-600 dark:text-slate-50 text-[10px]"
               >
-                ticker
+                Ticker
               </Label>
               <Input
                 id="ticker"
                 {...register("ticker", { required: "Required" })}
-                className="h-5 text-[10px] bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
+                className="h-5 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
               />
               {errors.ticker && (
                 <span className="text-red-500 text-[8px]">
@@ -193,14 +193,14 @@ export default function CreateTokenDialog() {
             <div className="space-y-1">
               <Label
                 htmlFor="description"
-                className="text-gray-600 dark:text-green-400 text-[10px]"
+                className="text-gray-600 dark:text-slate-50 text-[10px]"
               >
-                description
+                Description
               </Label>
               <Textarea
                 id="description"
                 {...register("description", { required: "Required" })}
-                className="h-16 text-[10px] bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white resize-none"
+                className="h-16 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white resize-none"
               />
               {errors.description && (
                 <span className="text-red-500 text-[8px]">
@@ -212,9 +212,9 @@ export default function CreateTokenDialog() {
             <div className="space-y-1">
               <Label
                 htmlFor="image"
-                className="text-gray-600 dark:text-green-400 text-[10px]"
+                className="text-gray-600 dark:text-slate-50 text-[10px]"
               >
-                image
+                Image
               </Label>
               <div className="flex flex-col items-center">
                 <Input
@@ -225,7 +225,7 @@ export default function CreateTokenDialog() {
                     required: "Required",
                     onChange: handleFileChange,
                   })}
-                  className="h-5 text-[10px] bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
+                  className="h-5 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
                 />
                 {previewUrl && (
                   <div className="mt-2 relative w-32 h-32">
@@ -249,14 +249,14 @@ export default function CreateTokenDialog() {
             <div className="space-y-1">
               <Label
                 htmlFor="twitterUsername"
-                className="text-gray-600 dark:text-green-400 text-[10px]"
+                className="text-gray-600 dark:text-slate-50 text-[10px]"
               >
-                twitter username<span className="text-red-500">*</span>
+                Twitter Username<span className="text-red-500">*</span>
               </Label>
               <Input
                 id="twitterUsername"
                 {...register("twitterUsername", { required: "Required" })}
-                className="h-5 text-[10px] bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
+                className="h-5 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
               />
               {errors.twitterUsername && (
                 <span className="text-red-500 text-[8px]">
@@ -268,38 +268,38 @@ export default function CreateTokenDialog() {
             <div className="space-y-1">
               <Label
                 htmlFor="telegramUsername"
-                className="text-gray-600 dark:text-green-400 text-[10px]"
+                className="text-gray-600 dark:text-slate-50 text-[10px]"
               >
-                telegram (optional)
+                Telegram (optional)
               </Label>
               <Input
                 id="telegramUsername"
                 {...register("telegramUsername")}
-                className="h-5 text-[10px] bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
+                className="h-5 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
               />
             </div>
 
             <div className="space-y-1">
               <Label
                 htmlFor="website"
-                className="text-gray-600 dark:text-green-400 text-[10px]"
+                className="text-gray-600 dark:text-slate-50 text-[10px]"
               >
-                website (optional)
+                Website (optional)
               </Label>
               <Input
                 id="website"
                 {...register("website")}
-                className="h-5 text-[10px] bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
+                className="h-5 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
               />
             </div>
 
             <p className="text-[8px] text-gray-500 dark:text-gray-400">
-              Tip: coin data cannot be changed after creation
+              Tip: Coin data cannot be changed after creation
             </p>
 
             <Button
               type="submit"
-              className="w-full h-6 bg-green-600 hover:bg-green-700 text-white text-[10px]"
+              className="w-full h-6 bg-blue-600 hover:bg-blue-700 text-white text-[10px]"
               disabled={mutation.isPending}
             >
               {mutation.isPending ? "Creating..." : "Create Token"}

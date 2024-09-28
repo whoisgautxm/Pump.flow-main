@@ -41,18 +41,18 @@ export default function MainPage() {
   const clearSearch = () => setSearchQuery("");
 
   return (
-    <div className="flex flex-col md:flex-row md:h-[calc(100vh-4rem)] bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-4 font-mono text-xs">
+    <div className="flex flex-col md:flex-row md:h-[calc(100vh-4rem)] bg-gray-100 dark:bg-gray-950 text-slate-50 dark:text-gray-100 p-4 font-mono text-xs">
       {/* Left side - Create Coin Form */}
       <div className="w-full md:w-2/3 pr-0 md:pr-4 mb-4 md:mb-0 md:overflow-y-auto">
-        <h2 className="text-2xl font-bold text-yellow-600 dark:text-yellow-400 mb-4 animate-[pixelate_2s_ease-in-out_infinite]">
+        <h2 className="text-2xl font-bold text-slate-50 dark:text-slate-50 mb-4 animate-[pixelate_2s_ease-in-out_infinite]">
           Launch Your Crypto Rocket 🚀
         </h2>
-        <Card className="bg-white dark:bg-gray-800 border border-yellow-300 dark:border-yellow-500 mb-4">
+        <Card className="bg-white dark:bg-zinc-800 border border-zinc-700 dark:border-zinc-700 mb-4">
           <CardContent className="p-4 text-[10px]">
-            <p className="text-yellow-600 dark:text-yellow-300 font-bold mb-2">
+            <p className="text-slate-50 dark:text-slate-50 font-bold mb-2">
               🛡️ Rug-Proof Zone 🛡️
             </p>
-            <p className="text-blue-600 dark:text-blue-300">
+            <p className="text-slate-100 dark:text-blue-300">
               Our crypto launchpad is like a shield against rug pulls! Every
               token here is a fair-launch gem, with no sneaky presales or team
               allocations. It's the Fort Knox of meme coins! 🏰💎
@@ -64,10 +64,10 @@ export default function MainPage() {
 
       {/* Right side - Token Cards */}
       <div className="w-full md:w-1/3 pl-0 md:pl-4">
-        <div className="bg-gray-100 dark:bg-gray-900 z-10 pb-2 sticky top-0">
+        <div className="bg-gray-100 dark:bg-zinc-900 z-10 pb-2 sticky top-0">
           <div className="relative w-full mb-4">
             <Input
-              className="w-full h-8 text-[10px] bg-white dark:bg-gray-800 border-green-300 dark:border-green-500 text-gray-900 dark:text-gray-300 placeholder-gray-500 dark:placeholder-gray-400 pr-8"
+              className="w-full h-8 text-[10px] bg-white dark:bg-zinc-800 border-zinc-700 dark:border-zinc-700 text-zinc-900 dark:text-slate-100 placeholder-gray-500 dark:placeholder-gray-400 pr-8"
               placeholder="Search tokens..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
