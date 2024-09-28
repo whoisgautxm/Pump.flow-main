@@ -162,7 +162,7 @@ export default function CreateTokenDialog() {
               <Input
                 id="name"
                 {...register("name", { required: "Required" })}
-                className="h-7 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
+                className="h-8 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-zinc-600 text-gray-900 dark:text-white"
               />
               {errors.name && (
                 <span className="text-red-500 text-[8px]">
@@ -181,7 +181,7 @@ export default function CreateTokenDialog() {
               <Input
                 id="ticker"
                 {...register("ticker", { required: "Required" })}
-                className="h-5 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
+                className="h-8 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-zinc-600 text-gray-900 dark:text-white"
               />
               {errors.ticker && (
                 <span className="text-red-500 text-[8px]">
@@ -200,7 +200,7 @@ export default function CreateTokenDialog() {
               <Textarea
                 id="description"
                 {...register("description", { required: "Required" })}
-                className="h-16 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white resize-none"
+                className="h-16 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-zinc-600 text-gray-900 dark:text-white resize-none"
               />
               {errors.description && (
                 <span className="text-red-500 text-[8px]">
@@ -225,7 +225,7 @@ export default function CreateTokenDialog() {
                     required: "Required",
                     onChange: handleFileChange,
                   })}
-                  className="h-5 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
+                  className="h-8 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-zinc-600 text-gray-900 dark:text-white"
                 />
                 {previewUrl && (
                   <div className="mt-2 relative w-32 h-32">
@@ -256,7 +256,7 @@ export default function CreateTokenDialog() {
               <Input
                 id="twitterUsername"
                 {...register("twitterUsername", { required: "Required" })}
-                className="h-5 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
+                className="h-8 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-zinc-600 text-gray-900 dark:text-white"
               />
               {errors.twitterUsername && (
                 <span className="text-red-500 text-[8px]">
@@ -275,7 +275,7 @@ export default function CreateTokenDialog() {
               <Input
                 id="telegramUsername"
                 {...register("telegramUsername")}
-                className="h-5 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
+                className="h-8 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-zinc-600 text-gray-900 dark:text-white"
               />
             </div>
 
@@ -289,7 +289,7 @@ export default function CreateTokenDialog() {
               <Input
                 id="website"
                 {...register("website")}
-                className="h-5 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
+                className="h-8 text-[10px] bg-gray-100 dark:bg-zinc-700 border-gray-200 dark:border-zinc-600 text-gray-900 dark:text-white"
               />
             </div>
 
@@ -299,7 +299,7 @@ export default function CreateTokenDialog() {
 
             <Button
               type="submit"
-              className="w-full h-6 bg-blue-600 hover:bg-blue-700 text-white text-[10px]"
+              className="w-full h-8 bg-blue-600 hover:bg-blue-700 text-white text-[10px]"
               disabled={mutation.isPending}
             >
               {mutation.isPending ? "Creating..." : "Create Token"}
