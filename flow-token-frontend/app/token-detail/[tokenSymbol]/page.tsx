@@ -29,8 +29,6 @@ export default function TokenDetail() {
   const supabase = createClient();
   const { address } = useAccount();
   const { setOpen } = useModal();
-  const [comments, setComments] = useState<any[]>([]);
-  const [comment, setComment] = useState("");
   const { data: totalSupply } = useReadContract<any, any, Array<any>>({
     abi: contract_abi,
     address: process.env.NEXT_PUBLIC_TOKEN_FACTORY_ADDRESS! as `0x${string}`,
@@ -56,49 +54,8 @@ export default function TokenDetail() {
         tokens.find((token: any) => token.symbol === tokenSymbol);
       setPageToken(token);
     }
-
-    if (pageToken && pageToken.tokenAddress) {
-      const fetchComments = async () => {
-        let { data: Comments, error } = await supabase
-          .from("Comments")
-          .select("*")
-          .eq("token", pageToken.tokenAddress)
-          .order("created_at", { ascending: false });
-
-        if (error || !Comments) {
-          console.error("Error fetching comments:", error);
-        } else {
-          setComments(Comments);
-        }
-      };
-
-      fetchComments();
-    }
   }, [tokenSymbol, tokens, pageToken]);
 
-  const handleCommentSubmit = async () => {
-    if (!pageToken || !pageToken.tokenAddress || !address) {
-      !address && setOpen(true);
-      return;
-    }
-
-    const commentDoc = {
-      comment_type: "token",
-      comment: comment,
-      token: pageToken.tokenAddress,
-      created_by: address,
-    };
-    const { data: created_comment, error } = await supabase
-      .from("Comments")
-      .insert(commentDoc)
-      .select()
-      .single();
-
-    if (created_comment) {
-      setComments((prevComments) => [created_comment, ...prevComments]);
-      setComment("");
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-2 font-mono text-xs">
@@ -233,81 +190,6 @@ export default function TokenDetail() {
           </CardContent>
         </Card>
       </div>
-
-      <Card className="mt-4 bg-white dark:bg-gray-800 border border-yellow-300 dark:border-yellow-500">
-        <CardHeader>
-          <CardTitle className="text-lg text-yellow-600 dark:text-yellow-400">
-            Add a Comment
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-2">
-            <textarea
-              className="w-full p-2 border rounded bg-gray-100 dark:bg-gray-700 border-yellow-300 dark:border-yellow-500 text-yellow-600 dark:text-yellow-300 placeholder-yellow-400 dark:placeholder-yellow-600 text-[10px]"
-              placeholder="Write your comment here..."
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              rows={4}
-            />
-            <Button
-              className="w-full h-6 bg-yellow-500 hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700 text-black dark:text-white font-bold text-[10px]"
-              onClick={handleCommentSubmit}
-            >
-              Submit Comment
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card className="mt-4 bg-white dark:bg-gray-800 border border-red-300 dark:border-red-500">
-        <CardHeader>
-          <CardTitle className="text-lg text-red-600 dark:text-red-400">
-            Comments
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          {comments.length > 0 ? (
-            <ul className="space-y-4">
-              {comments.map((comment, index) => (
-                <li
-                  key={index}
-                  className={`p-3 rounded-lg ${
-                    index % 2 === 0
-                      ? "bg-red-50 dark:bg-red-900/20"
-                      : "bg-white dark:bg-gray-800"
-                  }`}
-                >
-                  <div className="flex items-start space-x-3">
-                    <Avatar className="w-8 h-8 bg-red-200 dark:bg-red-700">
-                      <AvatarFallback className="text-red-700 dark:text-red-200">
-                        {comment.created_by.slice(0, 2).toUpperCase()}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1 space-y-1">
-                      <p className="text-[11px] text-gray-800 dark:text-gray-200">
-                        {comment.comment}
-                      </p>
-                      <div className="flex justify-between items-center text-[9px]">
-                        <span className="text-red-600 dark:text-red-400">
-                          {comment.created_by.slice(0, 6)}...
-                          {comment.created_by.slice(-4)}
-                        </span>
-                        <span className="text-gray-500 dark:text-gray-400">
-                          {new Date(comment.created_at).toLocaleString()}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-[11px] text-red-600 dark:text-red-300">
-              No comments yet.
-            </p>
-          )}
-        </CardContent>
-      </Card>
     </div>
   );
 }
