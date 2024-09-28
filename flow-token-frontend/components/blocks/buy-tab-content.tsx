@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useReadContract, useWriteContract } from "wagmi";
 import { contract_abi } from "@/abi/TokenFactoryAbi";
-import { flowTestnet } from "viem/chains";
+// import { flowTestnet } from "viem/chains";
 import { useQueryClient } from "@tanstack/react-query";
 interface Token {
   creatorAddress: string;
@@ -29,6 +29,7 @@ export default function BuyTabContent({
   onAmountChange,
   onQuickAmount,
 }: BuyTabContentProps) {
+  const neoTestnetId = 12227332;
   const {
     data: calculateCost,
     isFetching,
@@ -36,7 +37,7 @@ export default function BuyTabContent({
   } = useReadContract<any, any, Array<any>>({
     abi: contract_abi,
     address: process.env.NEXT_PUBLIC_TOKEN_FACTORY_ADDRESS! as `0x${string}`,
-    chainId: flowTestnet.id,
+    chainId: neoTestnetId,
     functionName: "calculateCost",
     args: [(totalSupply / 10 ** 18).toFixed(0), amount],
   });
@@ -57,7 +58,7 @@ export default function BuyTabContent({
     const tx = await writeContractAsync({
       abi: contract_abi,
       address: process.env.NEXT_PUBLIC_TOKEN_FACTORY_ADDRESS! as `0x${string}`,
-      chainId: flowTestnet.id,
+      chainId: neoTestnetId,
       functionName: "buyMemeToken",
       args: [token.tokenAddress, amount],
       value: BigInt(calculateCost as number),

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useWriteContract } from "wagmi";
 import { contract_abi } from "@/abi/TokenFactoryAbi";
-import { flowTestnet } from "viem/chains";
+// import { flowTestnet } from "viem/chains";
 import { useQueryClient } from "@tanstack/react-query";
 
 interface Token {
@@ -28,6 +28,7 @@ export default function SellTabContent({
   onAmountChange,
   onQuickAmount,
 }: SellTabContentProps) {
+  const neoTestnetId = 12227332;
   const {
     writeContractAsync,
     data: hash,
@@ -55,7 +56,7 @@ export default function SellTabContent({
     writeContractAsync({
       abi: contract_abi,
       address: process.env.NEXT_PUBLIC_TOKEN_FACTORY_ADDRESS! as `0x${string}`,
-      chainId: flowTestnet.id,
+      chainId: neoTestnetId,
       functionName: "sellMemeToken",
       args: [token.tokenAddress, amount],
     });

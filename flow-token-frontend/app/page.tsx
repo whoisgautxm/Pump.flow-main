@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import CreateTokenDialog from "@/components/blocks/create-token-dialog";
 import { useReadContract } from "wagmi";
 import { contract_abi } from "@/abi/TokenFactoryAbi";
-import { flowTestnet } from "viem/chains";
+// import { flowTestnet } from "viem/chains";
 import ProjectCard from "@/components/blocks/project-card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { X } from "lucide-react";
@@ -17,7 +17,7 @@ export default function MainPage() {
   const { data: tokens } = useReadContract<any, any, Array<any>>({
     abi: contract_abi,
     address: process.env.NEXT_PUBLIC_TOKEN_FACTORY_ADDRESS! as `0x${string}`,
-    chainId: flowTestnet.id,
+    chainId: 12227332,
     functionName: "getAllMemeTokens",
   });
 
